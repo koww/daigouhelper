@@ -200,7 +200,7 @@ namespace PriceCalc
         }
         #endregion
 
-        //TODO: http://api.fixer.io/latest?base=USD&symbols=CNY
+        //TODO: Add exchange rate fetch from http://api.fixer.io/latest?base=USD&symbols=CNY
     }
 
     public class myPickerViewModel : UIPickerViewModel 
