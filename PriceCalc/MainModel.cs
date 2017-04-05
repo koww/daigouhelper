@@ -15,11 +15,8 @@ namespace PriceCalc
         bool isTaxable;
         double weight;
         double unitcost;
-
+        double exchangeRate;
         const double taxrate = 0.0625;
-
-        //public myPickerViewModel weightPickerViewModel;
-        //public myPickerViewModel unitcostPickerViewModel;
         #endregion
 
         #region Constructors
@@ -32,8 +29,6 @@ namespace PriceCalc
             this.isTaxable = isTaxable;
             this.weight = 2.0;
             this.unitcost = 5.0;
-            //this.weightPickerViewModel = new myPickerViewModel(Weights,Weight);
-            //this.unitcostPickerViewModel = new myPickerViewModel(UnitCosts, CostPerWeightUnit);
         }
         #endregion
 
@@ -111,7 +106,7 @@ namespace PriceCalc
         {
             get
             {
-                return CostDollar * 7.0;
+                return CostDollar * exchangeRate;
             }
         }
 
@@ -151,7 +146,7 @@ namespace PriceCalc
         {
             get
             {
-                return FinalPriceDollar * 7.0;
+                return FinalPriceDollar * exchangeRate;
             }
         }
 
