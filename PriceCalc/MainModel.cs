@@ -27,8 +27,10 @@ namespace PriceCalc
             this.discount2 = discount2;
             this.discount3 = discount3;
             this.isTaxable = isTaxable;
-            this.weight = 2.0;
-            this.unitcost = 5.0;
+            this.weight = Weights[0];
+            this.unitcost = UnitCosts[0];
+            //TODO: Try to get real time exchange rate
+            this.exchangeRate = 7.0;
         }
         #endregion
 
