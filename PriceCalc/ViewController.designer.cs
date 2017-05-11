@@ -1,6 +1,6 @@
 // WARNING
 //
-// This file has been generated automatically by Xamarin Studio from the outlets and
+// This file has been generated automatically by Visual Studio from the outlets and
 // actions declared in your storyboard file.
 // Manual changes to this file will not be maintained.
 //
@@ -16,6 +16,10 @@ namespace PriceCalc
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel CostDollar { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UISwitch DefaultExchangeRate { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -46,18 +50,23 @@ namespace PriceCalc
         UIKit.UITextField TicketPrice { get; set; }
 
         [Outlet]
-        [GeneratedCode("iOS Designer", "1.0")]
-        UIKit.UITextField Weight { get; set; }
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField UnitCost { get; set; }
 
         [Outlet]
-		[GeneratedCode("iOS Designer", "1.0")]
-		UIKit.UITextField UnitCost { get; set; }
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField Weight { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
             if (CostDollar != null) {
                 CostDollar.Dispose ();
                 CostDollar = null;
+            }
+
+            if (DefaultExchangeRate != null) {
+                DefaultExchangeRate.Dispose ();
+                DefaultExchangeRate = null;
             }
 
             if (discount1 != null) {
@@ -95,16 +104,15 @@ namespace PriceCalc
                 TicketPrice = null;
             }
 
-            if (Weight != null) {
-                Weight.Dispose();
-                Weight = null;
+            if (UnitCost != null) {
+                UnitCost.Dispose ();
+                UnitCost = null;
             }
 
-            if (UnitCost != null)
-			{
-				UnitCost.Dispose();
-				UnitCost = null;
-			}
+            if (Weight != null) {
+                Weight.Dispose ();
+                Weight = null;
+            }
         }
     }
 }

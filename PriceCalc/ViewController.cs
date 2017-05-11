@@ -43,6 +43,11 @@ namespace PriceCalc
                 refreshAll();
             };
 
+            DefaultExchangeRate.ValueChanged += (sender, e) =>
+            {
+                refreshAll();
+            };
+
             ResetButton.TouchUpInside += (sender, e) =>
             {
                 resetAll();
@@ -127,6 +132,7 @@ namespace PriceCalc
             model.Discount2 = Convert.ToDouble(discount2.Text);
             model.Discount3 = Convert.ToDouble(discount3.Text);
             model.Taxable = Taxable.On;
+            model.DefaultRate = DefaultExchangeRate.On;
 			
             Weight.Text = weightPickerModel.SelectedItem.ToString("N");
 			UnitCost.Text = costPickerModel.SelectedItem.ToString("N");

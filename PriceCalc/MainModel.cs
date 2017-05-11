@@ -16,21 +16,22 @@ namespace PriceCalc
         double weight;
         double unitcost;
         double exchangeRate;
+        bool isDefault;
         const double taxrate = 0.0625;
         #endregion
 
         #region Constructors
-        public MainModel(double ticketprice = 0.0, double discount1 = 0.0, double discount2 = 0.0, double discount3 = 0.0, bool isTaxable = true)
+        public MainModel(double ticketprice = 0.0, double discount1 = 0.0, double discount2 = 0.0, double discount3 = 0.0, bool isTaxable = true, bool isDefault = true)
         {
             this.ticketprice = ticketprice;
             this.discount1 = discount1;
             this.discount2 = discount2;
             this.discount3 = discount3;
             this.isTaxable = isTaxable;
+            this.isDefault = isDefault;
             this.weight = Weights[0];
             this.unitcost = UnitCosts[0];
-            //TODO: Try to get real time exchange rate
-            this.exchangeRate = 7.0;
+            this.exchangeRate = ExchangeRateManager.GetExchangeRate(isDefault);
         }
         #endregion
 
@@ -92,6 +93,19 @@ namespace PriceCalc
             set
             {
                 isTaxable = value;
+            }
+        }
+
+        public bool DefaultRate
+        {
+            get
+            {
+                return isDefault;
+            }
+            set
+            {
+                isDefault = value;
+                this.exchangeRate = ExchangeRateManager.GetExchangeRate(isDefault);
             }
         }
 
@@ -182,6 +196,7 @@ namespace PriceCalc
                 };
             }
         }
+
         #endregion
 
         #region Methods
@@ -192,12 +207,12 @@ namespace PriceCalc
             this.discount2 = 0.0;
             this.discount3 = 0.0;
             this.isTaxable = true;
+            this.isDefault = true;
             this.Weight = Weights[0];
             this.CostPerWeightUnit = UnitCosts[0];
         }
         #endregion
 
-        //TODO: Add exchange rate fetch from http://api.fixer.io/latest?base=USD&symbols=CNY
     }
 
     public class myPickerViewModel : UIPickerViewModel 

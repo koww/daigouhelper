@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Runtime;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
+using System.Net;
 
 namespace PriceCalc
 {
@@ -21,5 +24,22 @@ namespace PriceCalc
 
         [DataMember]
         public Rates rates { get; set; }
+    }
+
+    public static class ExchangeRateManager{
+        private const double defaultRate = 7.0;
+        private const string apiEndpoint = "http://api.fixer.io/latest?base=USD&symbols=CNY";
+        public static double GetExchangeRate(bool useDefault = false){
+            if(useDefault){
+                return defaultRate;
+            }else{
+                using (var client = new WebClient())
+                {
+                    var jsonStr = client.DownloadString(apiEndpoint);
+                    ExchangeRateObject obj = JsonConvert.DeserializeObject<ExchangeRateObject>(jsonStr);
+                    return obj == null ? defaultRate : obj.rates.CNY;
+                }
+            }
+        }
     }
 }
