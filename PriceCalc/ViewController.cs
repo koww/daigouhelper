@@ -10,6 +10,7 @@ namespace PriceCalc
     {
         MainModel model = new MainModel();
         const string resetStr = "0.0";
+        const double defaultExchangeRate = 6.7;
 		myPickerViewModel weightPickerModel, costPickerModel;
 		UIPickerView weightpicker, costPicker;
 
@@ -39,11 +40,6 @@ namespace PriceCalc
 			discount3.ShouldReturn += shouldReturn;
 
             Taxable.ValueChanged += (sender, e) =>
-            {
-                refreshAll();
-            };
-
-            DefaultExchangeRate.ValueChanged += (sender, e) =>
             {
                 refreshAll();
             };
@@ -114,6 +110,17 @@ namespace PriceCalc
             UnitCost.InputView = costPicker;
             UnitCost.InputAccessoryView = toolbar2;
 
+            this.exchangeRateLabel.Text = Convert.ToString(defaultExchangeRate);
+            this.exchangeRateStepper.Value = 6.7;
+            this.exchangeRateStepper.MaximumValue = 7.0;
+            this.exchangeRateStepper.MinimumValue = 6.0;
+            this.exchangeRateStepper.StepValue = 0.1;
+            this.exchangeRateStepper.ValueChanged += (sender, e) =>
+            {
+                exchangeRateLabel.Text = Convert.ToString(this.exchangeRateStepper.Value);
+                refreshAll();
+            };
+
             refreshAll();
         }
 
@@ -132,7 +139,7 @@ namespace PriceCalc
             model.Discount2 = Convert.ToDouble(discount2.Text);
             model.Discount3 = Convert.ToDouble(discount3.Text);
             model.Taxable = Taxable.On;
-            model.DefaultRate = DefaultExchangeRate.On;
+            model.ExchangeRate = exchangeRateStepper.Value;
 			
             Weight.Text = weightPickerModel.SelectedItem.ToString("N");
 			UnitCost.Text = costPickerModel.SelectedItem.ToString("N");
@@ -163,7 +170,8 @@ namespace PriceCalc
 
             weightpicker.Select(0, 0, true);
             costPicker.Select(0, 0, true);
-
+            this.exchangeRateLabel.Text = Convert.ToString(defaultExchangeRate);
+            this.exchangeRateStepper.Value = defaultExchangeRate;
         }
 
         public override void TouchesBegan(NSSet touches, UIEvent evt)

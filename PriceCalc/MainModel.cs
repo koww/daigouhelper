@@ -21,17 +21,17 @@ namespace PriceCalc
         #endregion
 
         #region Constructors
-        public MainModel(double ticketprice = 0.0, double discount1 = 0.0, double discount2 = 0.0, double discount3 = 0.0, bool isTaxable = true, bool isDefault = true)
+        public MainModel(double ticketprice = 0.0, double discount1 = 0.0, double discount2 = 0.0, double discount3 = 0.0, bool isTaxable = true, double exchangeRate = 6.7)
         {
             this.ticketprice = ticketprice;
             this.discount1 = discount1;
             this.discount2 = discount2;
             this.discount3 = discount3;
             this.isTaxable = isTaxable;
-            this.isDefault = isDefault;
+            //this.isDefault = isDefault;
             this.weight = Weights[0];
             this.unitcost = UnitCosts[0];
-            this.exchangeRate = ExchangeRateManager.GetExchangeRate(isDefault);
+            this.exchangeRate = exchangeRate;
         }
         #endregion
 
@@ -96,16 +96,14 @@ namespace PriceCalc
             }
         }
 
-        public bool DefaultRate
-        {
+        public double ExchangeRate {
             get
             {
-                return isDefault;
+                return exchangeRate;
             }
             set
             {
-                isDefault = value;
-                this.exchangeRate = ExchangeRateManager.GetExchangeRate(isDefault);
+                exchangeRate = value;
             }
         }
 
@@ -210,6 +208,7 @@ namespace PriceCalc
             this.isDefault = true;
             this.Weight = Weights[0];
             this.CostPerWeightUnit = UnitCosts[0];
+            this.exchangeRate = 7.0;
         }
         #endregion
 

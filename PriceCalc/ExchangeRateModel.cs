@@ -27,7 +27,7 @@ namespace PriceCalc
     }
 
     public static class ExchangeRateManager{
-        private const double defaultRate = 7.0;
+        private const double defaultRate = 6.7;
         private const string apiEndpoint = "http://api.fixer.io/latest?base=USD&symbols=CNY";
         public static double GetExchangeRate(bool useDefault = false){
             if(useDefault){

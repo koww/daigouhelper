@@ -19,10 +19,6 @@ namespace PriceCalc
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UISwitch DefaultExchangeRate { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField discount1 { get; set; }
 
         [Outlet]
@@ -32,6 +28,14 @@ namespace PriceCalc
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField discount3 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel exchangeRateLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIStepper exchangeRateStepper { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -64,11 +68,6 @@ namespace PriceCalc
                 CostDollar = null;
             }
 
-            if (DefaultExchangeRate != null) {
-                DefaultExchangeRate.Dispose ();
-                DefaultExchangeRate = null;
-            }
-
             if (discount1 != null) {
                 discount1.Dispose ();
                 discount1 = null;
@@ -82,6 +81,16 @@ namespace PriceCalc
             if (discount3 != null) {
                 discount3.Dispose ();
                 discount3 = null;
+            }
+
+            if (exchangeRateLabel != null) {
+                exchangeRateLabel.Dispose ();
+                exchangeRateLabel = null;
+            }
+
+            if (exchangeRateStepper != null) {
+                exchangeRateStepper.Dispose ();
+                exchangeRateStepper = null;
             }
 
             if (FinalCost != null) {
