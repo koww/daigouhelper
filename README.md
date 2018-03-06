@@ -3,6 +3,7 @@ An iOS app written in C# with Xamarin iOS and VS for Mac.
 专门为去各大商场奥莱代购时使用，可计算折扣后的价格（税前/税后，$/￥）和加上运费之后的价格（$/￥）。
 
 Change Log:
+
 v1.2
 - 更新汇率计算方式为手动设置，暂时抛弃实时汇率而改用Stepper[6.0, 7.0, delta = 0.1]来计算
 
